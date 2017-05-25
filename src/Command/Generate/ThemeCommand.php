@@ -121,29 +121,29 @@ class ThemeCommand extends Command
             ->addOption(
                 'description',
                 '',
-                InputOption::VALUE_OPTIONAL,
+                InputOption::VALUE_REQUIRED,
                 $this->trans('commands.generate.module.options.description')
             )
             ->addOption(
                 'author',
                 '',
-                InputOption::VALUE_OPTIONAL,
+                InputOption::VALUE_REQUIRED,
                 $this->trans('commands.generate.theme.options.author')
             )
             ->addOption(
                 'author-url',
                 '',
-                InputOption::VALUE_OPTIONAL,
+                InputOption::VALUE_REQUIRED,
                 $this->trans('commands.generate.theme.options.author-url')
             )
             ->addOption(
                 'screenshot',
-                '',
+                null,
                 InputOption::VALUE_OPTIONAL,
                 $this->trans('commands.generate.theme.options.screenshot')
             )->addOption(
                 'template-files',
-                '',
+                null,
                 InputOption::VALUE_OPTIONAL,
                 $this->trans('commands.generate.theme.options.template-files')
             );
@@ -336,13 +336,5 @@ class ThemeCommand extends Command
              );
              $input->setOption('test', $test);
          }*/
-    }
-    
-    /**
-     * @return themeGenerator
-     */
-    protected function createGenerator()
-    {
-        return new themeGenerator();
     }
 }

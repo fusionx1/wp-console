@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains WP\Console\Command\Shared\ThemeTrait.
+ * Contains WP\Console\Command\Shared\PluginTrait.
  */
 
 namespace WP\Console\Command\Shared;
@@ -10,7 +10,7 @@ namespace WP\Console\Command\Shared;
 use WP\Console\Core\Style\WPStyle;
 
 /**
- * Class ThemeTrait
+ * Class PluginTrait
  *
  * @package WP\Console\Command
  */
@@ -25,7 +25,7 @@ trait ThemeTrait
     public function themeQuestion(WPStyle $io, $status = 'all')
     {
         $extensionManager = $this->extensionManager->discoverthemes();
-        
+
         if ($status == 'all') {
             $extensionManager->showDeactivated()->showActivated();
         } elseif ($status) {
@@ -33,18 +33,18 @@ trait ThemeTrait
         } else {
             $extensionManager->showDeactivated();
         }
-        
+
         $themes = $extensionManager->getList(true);
-        
+
         if (empty($themes)) {
             throw new \Exception('No extension available, execute the proper generator command to generate one.');
         }
-        
+
         $theme = $io->choiceNoList(
             $this->trans('commands.common.questions.theme'),
             $themes
         );
-        
+
         return $theme;
     }
 }
